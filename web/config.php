@@ -43,6 +43,9 @@ $hasMinorProblems = (bool) count($minorProblems);
             html {
                 background: #eee;
             }
+            
+            
+            
             body {
                 font: 11px Verdana, Arial, sans-serif;
                 color: #333;
