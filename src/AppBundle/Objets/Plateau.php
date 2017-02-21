@@ -30,8 +30,8 @@ class Plateau {
         
         for ($i=1; $i<=$x+1; $i++) {
             for ($j=1; $j<=$y+1; $j++) {
-                $td->setX($j);
-                $td->setY($i);
+                $lettre = chr($j+96);
+                $td->setY($lettre);
                 $tabtd[]=$td;
             }
         } 

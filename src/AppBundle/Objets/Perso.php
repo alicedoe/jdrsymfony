@@ -7,6 +7,7 @@
  */
 
 namespace AppBundle\Objets;
+use AppBundle\Objets\Races\Elfe;
 
 /**
  * Description of Perso
@@ -26,6 +27,14 @@ class Perso {
     private $mov;
     private $x;
     private $y;
+    private $n;
+    
+    function __construct($r) {
+
+        $this->race = new $r();
+        
+    }
+
     
     function getNom() {
         return $this->nom;

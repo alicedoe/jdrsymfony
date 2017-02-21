@@ -19,21 +19,23 @@ class DefaultController extends Controller
         // Instanciation du plateau en 20 x 20
         $pla = new Plateau(20,20);
         
-        $perso1 = new Perso();
-        $perso1->setX(1);
-        $perso1->setY(1);
-        $perso1->setAtt(10);
-        $perso1->setDef(0.5);
-        $perso1->setPv(20);
-        $perso1->setMov(3);
+//        $perso1 = new Perso();
+//        $perso1->setX("a");
+//        $perso1->setY(1);
+//        $perso1->setAtt(10);
+//        $perso1->setDef(0.5);
+//        $perso1->setPv(20);
+//        $perso1->setMov(3);
+//        
+//        $perso2 = new Perso();
+//        $perso2->setX("t");
+//        $perso2->setX(20);
+//        $perso2->setAtt(10);
+//        $perso2->setDef(0.5);
+//        $perso2->setPv(20);
+//        $perso2->setMov(3);
         
-        $perso2 = new Perso();
-        $perso2->setX(20);
-        $perso2->setX(20);
-        $perso2->setAtt(10);
-        $perso2->setDef(0.5);
-        $perso2->setPv(20);
-        $perso2->setMov(3);
+        $perso = new Perso("Elfe");
         
         // Génération de la vue avec le plateau & les perso        
         return $this->render('default/index.html.twig', [
