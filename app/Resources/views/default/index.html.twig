@@ -8,7 +8,7 @@
             {% for lettre in 'a'..'t' %}{% set var = lettre %}
             
                 <tr>{% for j in range(1, plateau.x+2) %}
-                    <td>{% if loop.first or loop.last %}{{lettre|upper}}{% endif %}</td>
+                    <td id="{{ lettre~(j-1) }}">{% if loop.first or loop.last %}{{lettre|upper}}{% endif %}</td>
                 {% endfor %}</tr>
             
             {% endfor %}
