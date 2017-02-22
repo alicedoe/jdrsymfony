@@ -6,16 +6,14 @@
  * and open the template in the editor.
  */
 namespace AppBundle\Objets\Races;
+use AppBundle\Objets\Race;
 /**
  * Description of Humain
  *
  * @author alice-gabbana
  */
-class Humain {
+class Humain extends Race {
     
-    private $att;
-    private $mov;
-    private $def;
     
     public function __construct() {
         $att = 8;

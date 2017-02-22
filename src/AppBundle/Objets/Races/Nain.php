@@ -6,15 +6,13 @@
  * and open the template in the editor.
  */
 namespace AppBundle\Objets\Races;
+use AppBundle\Objets\Race;
 /**
  * Description of Nain
  *
  * @author alice-gabbana
  */
-class Nain {
-           private $att;
-    private $mov;
-    private $def;
+class Nain extends Race {
     
     public function __construct() {
         $att = 10;

@@ -6,16 +6,13 @@
  * and open the template in the editor.
  */
 namespace AppBundle\Objets\Roles;
+use AppBundle\Objets\Role;
 /**
  * Description of Palade
  *
  * @author alice-gabbana
  */
-class Palade {
-        private $att;
-    private $mov;
-    private $def;
-    private $pv;
+class Palade extends Role {
     
     public function __construct() {
         $att = 2;

@@ -35,14 +35,15 @@ class DefaultController extends Controller
 //        $perso2->setPv(20);
 //        $perso2->setMov(3);
         
-        $perso = new Perso("Elfe");
+        $perso = new Perso();
+        
+        print_r($perso->getRace());
+        
         
         // Génération de la vue avec le plateau & les perso        
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-            'plateau' => $pla,
-            'perso1' => $perso1,
-            'perso2' => $perso2,
+            'plateau' => $pla
         ]);
     }
 }

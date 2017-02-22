@@ -6,16 +6,14 @@
  * and open the template in the editor.
  */
 namespace AppBundle\Objets\Roles;
+use AppBundle\Objets\Role;
 /**
  * Description of Magicien
  *
  * @author alice-gabbana
  */
-class Magicien {
-        private $att;
-    private $mov;
-    private $def;
-    private $pv;
+class Magicien  extends Role {
+
     
     public function __construct() {
         $att = 1;

@@ -6,15 +6,13 @@
  * and open the template in the editor.
  */
 namespace AppBundle\Objets\Races;
+use AppBundle\Objets\Race;
 /**
  * Description of Lapin
  *
  * @author alice-gabbana
  */
-class Lapin {
-            private $att;
-    private $mov;
-    private $def;
+class Lapin extends Race {
     
     public function __construct() {
         $att = 1;

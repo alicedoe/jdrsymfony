@@ -6,15 +6,14 @@
  * and open the template in the editor.
  */
 namespace AppBundle\Objets\Races;
+use AppBundle\Objets\Race;
 /**
  * Description of Orc
  *
  * @author alice-gabbana
  */
-class Orc {
-           private $att;
-    private $mov;
-    private $def;
+class Orc extends Race {
+
     
     public function __construct() {
         $att = 9;

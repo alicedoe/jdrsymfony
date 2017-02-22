@@ -9,22 +9,42 @@
 namespace AppBundle\Objets;
 
 /**
- * Description of Race
+ * Description of Races
  *
  * @author alice-gabbana
  */
 class Race {
-
+    private $att;
+    private $def;
+    private $mov;
     private $pv;
     
-    public function __construct($r) {
-        $pv=20;
-        $perso = new Races\Elfe();
-        print_r($perso);
+    function getAtt() {
+        return $this->att;
     }
-    
+
+    function getDef() {
+        return $this->def;
+    }
+
+    function getMov() {
+        return $this->mov;
+    }
+
     function getPv() {
         return $this->pv;
+    }
+
+    function setAtt($att) {
+        $this->att = $att;
+    }
+
+    function setDef($def) {
+        $this->def = $def;
+    }
+
+    function setMov($mov) {
+        $this->mov = $mov;
     }
 
     function setPv($pv) {
@@ -32,5 +52,5 @@ class Race {
     }
 
 
-
+    
 }

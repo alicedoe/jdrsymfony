@@ -8,6 +8,7 @@
 
 namespace AppBundle\Objets;
 use AppBundle\Objets\Races\Elfe;
+use AppBundle\Objets\Roles\Archer;
 
 /**
  * Description of Perso
@@ -20,22 +21,15 @@ class Perso {
     private $race;
     private $classe;
     private $email;
-    private $att;
-    private $def;
-    private $pv;
-//    private $pa;
-    private $mov;
     private $x;
     private $y;
-    private $n;
     
-    function __construct($r) {
+    function __construct() {
 
-        $this->race = new $r();
+        $this->race = new Elfe();
+        $this->classe = new Archer();
         
     }
-
-    
     function getNom() {
         return $this->nom;
     }
@@ -50,26 +44,6 @@ class Perso {
 
     function getEmail() {
         return $this->email;
-    }
-
-    function getAtt() {
-        return $this->att;
-    }
-
-    function getDef() {
-        return $this->def;
-    }
-
-    function getPv() {
-        return $this->pv;
-    }
-
-//    function getPa() {
-//        return $this->pa;
-//    }
-
-    function getMov() {
-        return $this->mov;
     }
 
     function getX() {
@@ -94,26 +68,6 @@ class Perso {
 
     function setEmail($email) {
         $this->email = $email;
-    }
-
-    function setAtt($att) {
-        $this->att = $att;
-    }
-
-    function setDef($def) {
-        $this->def = $def;
-    }
-
-    function setPv($pv) {
-        $this->pv = $pv;
-    }
-
-//    function setPa($pa) {
-//        $this->pa = $pa;
-//    }
-
-    function setMov($mov) {
-        $this->mov = $mov;
     }
 
     function setX($x) {
