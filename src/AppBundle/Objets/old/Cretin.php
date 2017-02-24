@@ -9,16 +9,29 @@
 namespace AppBundle\Objets;
 
 /**
- * Description of Role
+ * Description of Cretin
  *
  * @author alice-gabbana
  */
-class Role {
+class Cretin {
+
+    private $mov;
     private $att;
     private $def;
     private $pv;
-    private $mov;
+
+    public function __construct() {
+
+        $this->mov = 0;
+        $this->att = -2;
+        $this->def = 0;
+        $this->pv = -2;
+    }
     
+    function getMov() {
+        return $this->mov;
+    }
+
     function getAtt() {
         return $this->att;
     }
@@ -31,8 +44,8 @@ class Role {
         return $this->pv;
     }
 
-    function getMov() {
-        return $this->mov;
+    function setMov($mov) {
+        $this->mov = $mov;
     }
 
     function setAtt($att) {
@@ -47,9 +60,6 @@ class Role {
         $this->pv = $pv;
     }
 
-    function setMov($mov) {
-        $this->mov = $mov;
-    }
 
 
 }

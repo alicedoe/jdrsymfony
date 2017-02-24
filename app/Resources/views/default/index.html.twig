@@ -1,14 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <table>
+    <table class="table col-lg-12">
+        <thead><tr><th>Joueur</th><th>Nom</th><th>Points de vie</th><th>Mouvement</th><th>Action</th><th>Race</th><th>Classe</th><th>Attaque</th><th>Defense</th></thead>
+        <tr><th id="j1">Joueur 1</th><th>{{joueur1.nom}}</th><th id="j1pv"></th><th id="j1mov"></th><th id="j1act"></th><th>{{joueur1.race}}</th><th>{{joueur1.classe}}</th><th>{{joueur1.att}}</th><th>{{joueur1.def}}</th>
+        <tr><th id="j2">Joueur 2</th><th>{{joueur2.nom}}</th><th id="j2pv"></th><th id="j2mov"></th><th id="j2act"></th><th>{{joueur2.race}}</th><th>{{joueur2.classe}}</th><th>{{joueur2.att}}</th><th>{{joueur2.def}}</th>
+    </table>
+    <table class="table col-lg-12">
         <thead><tr><th></th>{% for i in range(1, plateau.y) %}<th>{{ i }}</th>{% endfor %}<th></th></tr></thead>
         <tfoot><tr><th></th>{% for i in range(1, plateau.y) %}<th>{{ i }}</th>{% endfor %}<th></th></tr></tfoot>
-        
+
             {% for lettre in 'a'..'t' %}{% set var = lettre %}
             
                 <tr>{% for j in range(1, plateau.x+2) %}
-                    <td id="{{ lettre~(j-1) }}">{% if loop.first or loop.last %}{{lettre|upper}}{% endif %}</td>
+                    <td class="case" id="{{(j-1)~"_"~lettre}}">{% if loop.first or loop.last %}{{lettre|upper}}{% endif %}</td>
                 {% endfor %}</tr>
             
             {% endfor %}

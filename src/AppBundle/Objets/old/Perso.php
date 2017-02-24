@@ -16,22 +16,26 @@ use AppBundle\Objets\Roles\Archer;
  * @author alice-gabbana
  */
 class Perso {
-    
-    private $nom;
+     
     private $race;
     private $classe;
     private $email;
+    private $nom;
     private $x;
     private $y;
+    private $mov;
+    private $att;
+    private $def;
+    private $pv;
     
-    function __construct() {
-
-        $this->race = new Elfe();
-        $this->classe = new Archer();
-        
-    }
-    function getNom() {
-        return $this->nom;
+    public function caracPerso() {
+            
+            $this->setAtt($this->classe->getAtt() + $this->race->getRaAtt());
+            $this->setDef($this->classe->getDef() + $this->race->getRaDef());
+            $this->setMov($this->classe->getMov() + $this->race->getRaMov());
+            $this->setPv($this->classe->getPv() + 20);
+            
+            echo $this->getAtt();
     }
 
     function getRace() {
@@ -46,6 +50,10 @@ class Perso {
         return $this->email;
     }
 
+    function getNom() {
+        return $this->nom;
+    }
+
     function getX() {
         return $this->x;
     }
@@ -54,8 +62,20 @@ class Perso {
         return $this->y;
     }
 
-    function setNom($nom) {
-        $this->nom = $nom;
+    function getMov() {
+        return $this->mov;
+    }
+
+    function getAtt() {
+        return $this->att;
+    }
+
+    function getDef() {
+        return $this->def;
+    }
+
+    function getPv() {
+        return $this->pv;
     }
 
     function setRace($race) {
@@ -70,6 +90,10 @@ class Perso {
         $this->email = $email;
     }
 
+    function setNom($nom) {
+        $this->nom = $nom;
+    }
+
     function setX($x) {
         $this->x = $x;
     }
@@ -78,6 +102,20 @@ class Perso {
         $this->y = $y;
     }
 
+    function setMov($mov) {
+        $this->mov = $mov;
+    }
 
-    
+    function setAtt($att) {
+        $this->att = $att;
+    }
+
+    function setDef($def) {
+        $this->def = $def;
+    }
+
+    function setPv($pv) {
+        $this->pv = $pv;
+    }
+
 }

@@ -3,13 +3,108 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}<script type="text/javascript">
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+</head>
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript">
 
-            </script>{% endblock %}
-    </body>
+        $(document).ready(function () {
+            document.getElementById("{{joueur1.coord}}").style.border = "3px blue solid";
+            var joueur1 = {act:2, id:1, pv:{{joueur1.pv}}, att:{{joueur1.att}}, def:{{joueur1.def}}, mov:{{joueur1.mov}}, movencours:{{joueur1.mov}}, race:"{{joueur1.race}}", classe:"{{joueur1.classe}}", coord:"{{joueur1.coord}}"};           
+            $( "#j1mov" ).text(joueur1.movencours);
+            $( "#j1pv" ).text(joueur1.pv);
+            $( "#j1act" ).text(joueur1.act);
+            
+            document.getElementById("{{joueur2.coord}}").style.border = "3px green solid";
+            var joueur2 = {act:2, id:2, pv:{{joueur2.pv}}, att:{{joueur2.att}}, def:{{joueur2.def}}, mov:{{joueur2.mov}}, movencours:{{joueur2.mov}}, race:"{{joueur2.race}}", classe:"{{joueur2.classe}}", coord:"{{joueur2.coord}}"};
+            $( "#j2mov" ).text(joueur2.movencours);
+            $( "#j2pv" ).text(joueur2.pv);
+            $( "#j2act" ).text(joueur2.act);            
+            
+            var tour = joueur1.id;
+            document.getElementById("j1").style.backgroundColor = "green";
+            
+        $('.case').on('click', function () {
+            
+            switch(tour) {
+    case 1:
+        var joueurencours = joueur1
+        document.getElementById("j1").style.backgroundColor = "green";
+        document.getElementById("j2").style.backgroundColor = "transparent";
+        break;
+    case 2:
+        var joueurencours = joueur2
+        document.getElementById("j2").style.backgroundColor = "green";
+        document.getElementById("j1").style.backgroundColor = "transparent";
+        break;
+}
+            
+            coord=$(this).attr("id");
+            $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        data: {dest: coord, joueur: joueurencours},
+        url: "./move/"+coord,
+        success: function (data) {
+            joueur = data;
+            
+        switch(joueur.id) {
+    case "1":   
+        console.log("On était sur la case : " + joueur1.coord);
+        document.getElementById(joueur1.coord).style.border = "1px solid black";
+        joueur1 = joueur;
+        document.getElementById(joueur1.coord).style.border = "3px blue solid";
+        console.log("En avant pour la case : " + joueur1.coord);
+        $( "#j1mov" ).text(joueur1.movencours);
+        $( "#j1act" ).text(joueur1.act);
+        
+        break;
+    case "2":
+        console.log("On était sur la case : " + joueur2.coord);
+        document.getElementById(joueur2.coord).style.border = "1px solid black";
+        joueur2 = joueur;
+        document.getElementById(joueur2.coord).style.border = "3px green solid";
+        console.log("En avant pour la case : " + joueur2.coord);
+        $( "#j2mov" ).text(joueur2.movencours);
+        $( "#j2act" ).text(joueur2.act);
+        break;
+} 
+
+    if (typeof joueur.error !== 'undefined') { switch(joueur.error) {
+    case 1:
+        if (tour==1) {
+                tour=2; document.getElementById("j2").style.backgroundColor = "green";
+                document.getElementById("j1").style.backgroundColor = "transparent";
+                joueur1.movencours = joueur1.mov; joueur1.act = 2;
+                $( "#j1mov" ).text(joueur1.movencours);
+                $( "#j1act" ).text(joueur1.act);
+                    }
+        else {tour=1; document.getElementById("j1").style.backgroundColor = "green";
+                document.getElementById("j2").style.backgroundColor = "transparent";
+                joueur2.movencours = joueur2.mov; joueur2.act = 2;
+                $( "#j2mov" ).text(joueur2.movencours);
+                $( "#j2act" ).text(joueur2.act);}
+        break;
+} } else {console.log("joueur.error vide, joueur en cours : " + joueur.id);}
+            
+        
+        }
+        
+        });    
+            
+            
+            
+
+        });
+
+});
+    </script>            
+{% endblock %}
+</body>
 </html>

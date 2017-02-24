@@ -5,19 +5,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-namespace AppBundle\Objets\Roles;
-use AppBundle\Objets\Role;
+namespace AppBundle\Objets;
 /**
  * Description of Cretin
  *
  * @author alice-gabbana
  */
-class Cretin  extends Role {
+class Archer {
     
     public function __construct() {
-        $att = -2;
-        $mov = 0;
-        $def = 0;
-        $pv = -2;
+       echo "Je suis un archer";
     }
 }
